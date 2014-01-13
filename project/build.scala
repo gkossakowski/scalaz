@@ -70,7 +70,7 @@ object build extends Build {
     scalacOptions in (Compile, doc) <++= (baseDirectory in LocalProject("scalaz")) map { bd =>
       Seq("-sourcepath", bd.getAbsolutePath, "-doc-source-url", "https://github.com/scalaz/scalaz/tree/scalaz-seven€{FILE_PATH}.scala")
     },
-    incOptions := incOptions.value.withNameHashing(true),
+    incOptions := incOptions.value.withNameHashing(true).withApiDebug(true),
 
     // retronym: I was seeing intermittent heap exhaustion in scalacheck based tests, so opting for determinism.
     parallelExecution in Test := false,
